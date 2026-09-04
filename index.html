@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy 20th Birthday Dolly Didi 🎂</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#fff;font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 10%,#ff3f86,#65106f 35%,#15001f 75%);overflow-x:hidden}
+section{min-height:100vh;padding:60px 18px;display:flex;align-items:center;justify-content:center}.card{width:min(1050px,100%);padding:32px;border-radius:30px;background:#22002dcc;border:1px solid #fff3;backdrop-filter:blur(12px);box-shadow:0 25px 70px #0007;text-align:center}
+h1{font-size:clamp(44px,9vw,92px);margin:12px 0;text-shadow:0 0 25px #ff5da2}h2{font-size:clamp(30px,5vw,55px)}p{font-size:19px;line-height:1.6}.btn{border:0;border-radius:99px;padding:15px 25px;margin:8px;background:linear-gradient(90deg,#ff3f86,#ffb52e);color:white;font-size:17px;font-weight:bold;cursor:pointer;box-shadow:0 10px 25px #0005}
+.music{position:fixed;right:15px;top:15px;z-index:100}.music button{border:1px solid #fff4;background:#25002fee;color:#fff;padding:12px 17px;border-radius:99px;cursor:pointer}
+.balloons{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin:25px 0}.balloon{width:62px;height:78px;border:0;border-radius:50% 50% 47% 47%;cursor:pointer;font-size:25px;color:#fff;box-shadow:inset -8px -10px 14px #0003,0 8px 15px #0004;transition:.2s}.balloon:hover{transform:translateY(-7px)}.popped{animation:pop .3s forwards}@keyframes pop{50%{transform:scale(1.35)}100%{transform:scale(0);opacity:0}}
+.progress{height:13px;background:#fff2;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#ffd166,#ff4d9d);transition:.3s}.hidden{display:none!important}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}@media(max-width:750px){.grid{grid-template-columns:1fr}}
+.photo{width:min(430px,100%);border:9px solid #fff;border-radius:20px;box-shadow:0 20px 50px #0008;transform:rotate(-2deg)}
+video{width:100%;max-height:550px;border-radius:20px;background:#000}
+.cake{position:relative;width:min(550px,90%);height:260px;margin:30px auto}.plate{position:absolute;bottom:0;left:2%;width:96%;height:30px;border-radius:50%;background:#ddd}.layer{position:absolute;left:8%;width:84%;height:75px;background:#ffd2e1;border-radius:20px 20px 30px 30px;box-shadow:inset 0 -9px #ff78a6}.lower{bottom:25px}.upper{bottom:87px;width:74%;left:13%;height:65px;background:#fff0f5}.frost{position:absolute;left:8%;top:65px;width:84%;height:42px;background:#ff6b9d;border-radius:20px}.drip{position:absolute;top:85px;width:18px;height:40px;background:#ff6b9d;border-radius:0 0 12px 12px}.d1{left:20%}.d2{left:40%;height:52px}.d3{left:63%;height:30px}.d4{left:77%;height:45px}.num{position:absolute;z-index:3;bottom:80px;left:50%;transform:translateX(-50%);font-size:70px;font-weight:900;color:#ffd166;text-shadow:0 5px 12px #8b4a00}.candle{position:absolute;z-index:4;left:50%;bottom:145px;transform:translateX(-50%);width:14px;height:45px;background:#fff;border-radius:5px}.flame{position:absolute;top:-25px;left:50%;width:18px;height:27px;background:#ffd166;border-radius:50% 50% 50% 0;transform:translateX(-50%) rotate(45deg);animation:flick .3s infinite alternate}@keyframes flick{to{transform:translateX(-50%) rotate(45deg) scale(1.15)}}.knife{font-size:62px;cursor:pointer;display:inline-block;transform:rotate(-25deg)}.knife.cut{animation:cut .8s}.cake.cut .slice{animation:slice .9s forwards}.slice{position:absolute;right:1%;bottom:25px;width:120px;height:80px;border-radius:18px;background:#ffd2e1;opacity:0}@keyframes cut{50%{transform:rotate(30deg) translateX(70px)}100%{transform:rotate(-25deg)}}@keyframes slice{to{transform:translateX(130px) rotate(8deg);opacity:1}}
+#wishes{opacity:0;transform:translateY(20px);transition:.8s}#wishes.show{opacity:1;transform:none}canvas{position:fixed;inset:0;pointer-events:none;z-index:90}.float{position:fixed;bottom:-70px;font-size:38px;z-index:-1;animation:float 9s linear infinite}@keyframes float{to{transform:translateY(-115vh) rotate(360deg)}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="music"><button id="musicBtn" onclick="toggleMusic()">🎵 Start One Dance</button><audio id="music" loop preload="auto"><source src="one_dance.webm" type="audio/webm"></audio></div>
+
+<section><div class="card"><div style="font-size:70px">🎈🎂✨</div><h1>Happy Birthday<br>Dolly Didi!</h1><h2>20 & Fabulous 💖</h2><p>Your special birthday surprise starts with a challenge: pop all 20 balloons! 🎈</p><button class="btn" onclick="party()">🎉 START THE SURPRISE</button></div></section>
+
+<section id="game"><div class="card"><h2>🎈 Pop 20 Balloons 🎈</h2><p>One balloon for every year. Pop them all to unlock the next surprise!</p><div class="progress"><div id="bar" class="bar"></div></div><p id="count">0 / 20 popped</p><div id="balloons" class="balloons"></div><div id="done" class="hidden"><h2>🎉 YOU DID IT! 🎉</h2><button class="btn" onclick="go('meme')">😂 WATCH THE MEME</button></div></div></section>
+
+<section id="meme"><div class="card"><h2>😂 Birthday Meme 😂</h2><video controls playsinline><source src="birthday_meme.mp4" type="video/mp4"></video><p>POV: It's Dolly Didi's birthday! 😂🎂</p><button class="btn" onclick="go('cake')">🎂 CUT THE CAKE</button></div></section>
+
+<section id="cake"><div class="card"><h2>🎂 Make a Wish & Cut the Cake!</h2><p>Close your eyes, make your birthday wish, then click the knife. ✨</p>
+<div id="cakeObj" class="cake"><div class="candle"><div class="flame"></div></div><div class="num">20</div><div class="frost"></div><div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="drip d4"></div><div class="layer upper"></div><div class="layer lower"></div><div class="plate"></div><div class="slice"></div></div>
+<div id="knife" class="knife" onclick="cutCake()">🔪</div><div id="cakeDone" class="hidden"><h2>✨ Wish Made! 💖</h2><button class="btn" onclick="go('final');confetti()">💐 OPEN YOUR WISHES</button></div></div></section>
+
+<section id="final"><div class="card"><div class="grid"><div><img class="photo" src="dolly_childhood.jpeg" alt="Dolly Didi childhood photo"></div><div><h2>From this little cutie... 🥰</h2><p>...to the amazing person you are today! 💖</p><button class="btn" onclick="reveal()">💌 OPEN BIRTHDAY WISHES</button></div></div>
+<div id="wishes"><h1>Happy 20th Birthday,<br>Dolly Didi! 🎂</h1><p>May your 20th year bring you endless happiness, laughter, success and beautiful memories.</p><p>May every dream you have come true. Keep smiling, keep shining, and always stay the wonderful person you are. ✨</p><h2>💖 Lots of love & the best wishes always! 💖</h2><p><b>Here's to 20 amazing years and many more! 🥳🎁</b></p></div></div></section>
+
+<script>
+const colors=['#ff477e','#ff9f1c','#2ec4b6','#4895ef','#9d4edd','#ffd166'],area=document.getElementById('balloons');let popped=0;
+for(let i=1;i<=20;i++){let b=document.createElement('button');b.className='balloon';b.style.background=colors[(i-1)%colors.length];b.textContent='🎈';b.onclick=()=>{if(b.classList.contains('popped'))return;b.classList.add('popped');popped++;document.getElementById('count').textContent=popped+' / 20 popped';document.getElementById('bar').style.width=popped*5+'%';if(popped===20){document.getElementById('done').classList.remove('hidden');confetti()}};area.appendChild(b)}
+const music=document.getElementById('music'),musicBtn=document.getElementById('musicBtn');
+function startMusic(){music.play().then(()=>musicBtn.textContent='🔊 One Dance — Playing').catch(()=>{})}
+function toggleMusic(){if(music.paused)startMusic();else{music.pause();musicBtn.textContent='🔇 Music Paused'}}
+function party(){startMusic();confetti();go('game')}
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function cutCake(){let c=document.getElementById('cakeObj');if(c.classList.contains('cut'))return;c.classList.add('cut');document.getElementById('knife').classList.add('cut');setTimeout(()=>{document.getElementById('cakeDone').classList.remove('hidden');confetti()},850)}
+function reveal(){document.getElementById('wishes').classList.add('show');confetti()}
+function confetti(){let c=document.getElementById('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;let a=Array.from({length:180},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height,w:6+Math.random()*8,h:8+Math.random()*10,v:2+Math.random()*5,r:Math.random()*6}));let n=0;function d(){x.clearRect(0,0,c.width,c.height);a.forEach(p=>{p.y+=p.v;p.r+=.08;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=`hsl(${Math.random()*360},90%,65%)`;x.fillRect(-p.w/2,-p.h/2,p.w,p.h);x.restore()});if(n++<200)requestAnimationFrame(d);else x.clearRect(0,0,c.width,c.height)}d()}
+for(let i=0;i<12;i++){let f=document.createElement('div');f.className='float';f.textContent=['🎈','✨','💖','🎉','🎁'][i%5];f.style.left=Math.random()*100+'vw';f.style.animationDelay=Math.random()*9+'s';document.body.appendChild(f)}
+</script>
+</body></html>
